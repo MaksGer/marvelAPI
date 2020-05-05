@@ -1,0 +1,64 @@
+<mat-dialog-content>
+	<div class="hero-modal">
+		<div class="hero-item-image"
+		     [style.background-image]="'url(' + data.thumbnail.path + '.' + data.thumbnail.extension +')'">
+		</div>
+
+		<div class="hero-info">
+			<mat-icon class="dialog-close"
+			          (click)="close()">
+				close
+			</mat-icon>
+
+			<h3 mat-dialog-title
+			    class="hero-item-title marvel-font">
+				{{data.name}}
+			</h3>
+
+			<div class="hero-description">
+				<p [innerHTML]="data.description"></p>
+			</div>
+
+			<div class="hero-item-links full-width">
+				<a *ngFor="let link of data.urls"
+				   mat-stroked-button
+				   href="{{link.url}}"
+				   target="_blank">
+					{{link.type}}
+				</a>
+			</div>
+		</div>
+	</div>
+</mat-dialog-content>
+
+<div *ngIf="!isLoading; else spinner">
+	<div class="comics-carousel">
+		<ngu-carousel #myCarousel [inputs]="carouselConfig" [dataSource]="listOfComics">
+			<div *nguCarouselDef="let item;" class="comics-item item">
+				<a href="{{item.urls[0].url}}">
+					<div class="comics-background"
+					     [style.background-image]="'url(' + item.thumbnail.path + '.' + item.thumbnail.extension +')'">
+					</div>
+				</a>
+				<p class="comics-title">{{item.title}}</p>
+			</div>
+
+			<mat-icon NguCarouselPrev class="leftRs">navigate_before</mat-icon>
+			<mat-icon NguCarouselNext class="rightRs">navigate_next</mat-icon>
+
+			<ul class="myPoint" NguCarouselPoint>
+				<li *ngFor="let j of myCarousel.pointNumbers; let j = index"
+				    [class.active]="j == myCarousel.activePoint"
+				    (click)="myCarousel.moveTo(j)"></li>
+			</ul>
+		</ngu-carousel>
+	</div>
+</div>
+
+<ng-template #spinner>
+	<div class="spinner-modal">
+		<ngx-pulse-loader class="item"
+		                  color="white">
+		</ngx-pulse-loader>
+	</div>
+</ng-template>

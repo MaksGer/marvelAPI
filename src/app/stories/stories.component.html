@@ -1,0 +1,19 @@
+<section *ngIf="!isLoading; else spinner">
+	<div class="user-controls">
+		<app-pagination class="pull-right"
+		                (changeLimit)="getLimit($event)"></app-pagination>
+	</div>
+
+	<app-grid-for-tabs [component]="dialogTemplate"
+	                   [itemsList]="storiesList"
+	                   [isSearchActive]="isSearchActive">
+	</app-grid-for-tabs>
+</section>
+
+<ng-template #spinner>
+	<div class="spinner">
+		<ngx-pulse-loader class="item"
+		                  color="white">
+		</ngx-pulse-loader>
+	</div>
+</ng-template>

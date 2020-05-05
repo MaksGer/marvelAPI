@@ -1,0 +1,121 @@
+.hero-modal {
+	display: flex;
+}
+
+.hero-item-title {
+	text-align: center;
+}
+
+.hero-item-image {
+	height: 280px;
+	width: 280px;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.hero-info {
+	flex: 1 100px;
+	display: flex;
+	flex-direction: column;
+}
+
+.hero-description {
+	padding-left: 24px;
+}
+
+.hero-item-links {
+	display: flex;
+	justify-content: flex-start;
+	padding: 15px 0;
+}
+
+.hero-item-links a {
+	color: white;
+	text-transform: capitalize;
+	text-decoration: none;
+	margin-left: 15px;
+}
+
+.mat-raised-button {
+	margin: 0 auto;
+}
+
+.comics-carousel {
+	padding-top: 20px;
+}
+
+.comics-item {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	height: 280px;
+	padding: 0 10px
+}
+
+.comics-background {
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 120px;
+	height: 180px;
+}
+
+.comics-title {
+	text-align: center;
+}
+
+.leftRs {
+	position: absolute;
+	margin: auto;
+	top: -15%;
+	bottom: 0;
+	left: -7px;
+	cursor: pointer;
+}
+
+.rightRs {
+	position: absolute;
+	margin: auto;
+	top: -15%;
+	bottom: 0;
+	right: -7px;
+	cursor: pointer;
+}
+
+.myPoint {
+	position: relative;
+	list-style-type: none;
+	text-align: center;
+	padding: 12px;
+	margin: 0;
+	white-space: nowrap;
+	overflow: auto;
+	box-sizing: border-box;
+}
+.myPoint li {
+	display: inline-block;
+	border-radius: 50%;
+	border: 2px solid rgba(255, 255, 255, 0.55);
+	padding: 4px;
+	margin: 0 3px;
+	transition-timing-function: cubic-bezier(0.17, 0.67, 0.83, 0.67);
+	transition: 0.4s;
+}
+.myPoint li.active {
+	background: #ffffff;
+	transform: scale(1.2);
+}
+
+.spinner-modal {
+	height: 340px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+@media  screen and (max-width: 1250px) {
+	.hero-item-image {
+		height: 180px;
+		width: 180px;
+	}
+}

@@ -1,0 +1,6 @@
+<mat-card class="card-item card-image"
+          [style.background-image]="'url(' + item.thumbnail.path + '.' + item.thumbnail.extension +')'">
+	<div class="card-title full-width">
+		{{item.title || item.fullName || item.name}}
+	</div>
+</mat-card>

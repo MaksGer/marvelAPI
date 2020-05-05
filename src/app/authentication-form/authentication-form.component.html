@@ -1,0 +1,139 @@
+<div class="spinner"
+     *ngIf="routerChanged; else app">
+
+	<ngx-pulse-loader class="item"
+	                 color="white">
+	</ngx-pulse-loader>
+</div>
+
+<ng-template #app>
+	<div class="login-page"
+	     [ngClass]="styleObject.bgClass">
+		<div class="container"
+		     [ngSwitch]="isLoginExist">
+			<div class="logo">
+				<img class="full-width"
+				     src="../../assets/images/logo.png"
+				     alt="logo-marvel">
+			</div>
+
+			<div class="form"
+			     [ngSwitch]="isLoginExist">
+				<form *ngSwitchCase="true"
+				      class="login full-width"
+				      [formGroup]="formToLogIn"
+				      (ngSubmit)="submitLogIn()">
+					<mat-form-field>
+						<input matInput
+						       placeholder="Login"
+						       formControlName="login">
+
+						<mat-error *ngIf="formToLogIn.get('login').hasError('pattern')">
+							<span class="error">Email should must be a valid email address</span>
+						</mat-error>
+						<mat-error *ngIf="formToLogIn.get('login').hasError('required')">
+							<span class="error">Login is required field</span>
+						</mat-error>
+					</mat-form-field>
+
+					<mat-form-field>
+						<input matInput
+						       placeholder="Password"
+						       type="password"
+						       formControlName="password">
+
+						<mat-error *ngIf="formToLogIn.get('password').hasError('required')">
+							<span class="error">Password is required field</span>
+						</mat-error>
+					</mat-form-field>
+
+					<div class="button">
+						<button mat-raised-button
+						        class="full-width"
+						        type="submit"
+						        [ngStyle]="{'backgroundColor': styleObject.bgColor}"
+						        [disabled]="formToLogIn.invalid">
+							Log In
+						</button>
+					</div>
+
+					<div class="subtitle">
+						<p>
+							Not registered?
+							<button mat-button
+							        type="button"
+							        (click)="changeForm(formToLogIn)">
+								Create an account
+							</button>
+						</p>
+					</div>
+				</form>
+
+				<form *ngSwitchCase="false"
+				      class="login full-width"
+				      [formGroup]="formToSignUp"
+				      (ngSubmit)="submitSignUp()">
+					<mat-form-field>
+						<input matInput
+						       placeholder="Email address"
+						       formControlName="email"
+						       class="full-width"
+						       required>
+
+						<mat-error *ngIf="formToSignUp.get('email').hasError('pattern')">
+							<span class="error">Email should must be a valid email address</span>
+						</mat-error>
+						<mat-error *ngIf="formToSignUp.get('email').hasError('required')">
+							<span class="error">Email is required field</span>
+						</mat-error>
+					</mat-form-field>
+
+					<mat-form-field>
+						<input matInput
+						       placeholder="Name"
+						       formControlName="name"
+						       required>
+						<mat-error *ngIf="formToSignUp.get('name').hasError('required')">
+							<span class="error">Name is required field</span>
+						</mat-error>
+					</mat-form-field>
+
+					<mat-form-field>
+						<input matInput
+						       placeholder="Password"
+						       type="password"
+						       formControlName="password"
+						       required>
+
+						<mat-error *ngIf="formToSignUp.get('password').hasError('minlength')">
+							<span class="error">Password must be at least 8 characters</span>
+						</mat-error>
+						<mat-error *ngIf="formToSignUp.get('password').hasError('required')">
+							<span class="error">Password is required field</span>
+						</mat-error>
+					</mat-form-field>
+
+					<div class="button">
+						<button mat-raised-button
+						        class="full-width"
+						        type="submit"
+						        [ngStyle]="{'backgroundColor': styleObject.bgColor}"
+						        [disabled]="formToSignUp.invalid">
+							Create
+						</button>
+					</div>
+
+					<div class="subtitle">
+						<p>
+							Already registered?
+							<button mat-button
+							        (click)="changeForm(formToSignUp)">
+								Sign in
+							</button>
+						</p>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</ng-template>

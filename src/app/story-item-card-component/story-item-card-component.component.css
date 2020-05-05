@@ -1,0 +1,18 @@
+.story-item {
+	width: 250px;
+	height: 250px;
+	background-repeat: no-repeat;
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-image: url('../../assets/images/stories-bg.jpg');
+}
+
+.story-toggle {
+	float: right;
+	cursor: pointer;
+}
+
+.story-title {
+	background-color: rgba(0, 0, 0, .4);
+	cursor: pointer;
+}

@@ -1,0 +1,12 @@
+<div class="simple-pagination full-width">
+	<mat-form-field>
+		<mat-label>Items per page</mat-label>
+		<mat-select [(value)]="selected"
+		            (selectionChange)="itemsPerPage()">
+			<mat-option *ngFor="let item of selectOptions"
+			            [value]=item>
+				{{item}}
+			</mat-option>
+		</mat-select>
+	</mat-form-field>
+</div>
