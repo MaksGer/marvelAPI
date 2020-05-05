@@ -16,7 +16,10 @@ export class AuthenticationFormComponent implements OnInit {
 	formToSignUp: FormGroup;
 	formToLogIn: FormGroup;
 	emailPattern: string = '^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$';
-	styleObject: object;
+	styleObject: {
+		bgColor: string;
+		bgClass: string;
+	};
 	timeout;
 	routerChanged = true;
 
